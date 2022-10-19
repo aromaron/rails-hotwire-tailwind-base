@@ -1,0 +1,6 @@
+format: progress
+
+ignore:
+  - 'db/**/*'
+  - 'vendor/**/*'
+  - 'bin/**/*'
