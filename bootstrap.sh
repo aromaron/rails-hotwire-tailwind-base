@@ -14,7 +14,7 @@ project_name=$1
 bundle install
 
 #install node packages
-yarn
+# yarn
 
 # copy env sample
 cp .env.sample .env
