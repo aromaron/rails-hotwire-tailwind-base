@@ -82,5 +82,4 @@ test:
 production:
   <<: *default
   database: rails_hotwire_tailwind_base_production
-  username: rails_hotwire_tailwind_base
   password: <%= ENV["RAILS_HOTWIRE_TAILWIND_BASE_DATABASE_PASSWORD"] %>
