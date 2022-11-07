@@ -2,18 +2,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require "simplecov"
 
-SimpleCov.start "rails" do
-  add_group "Services", "app/services"
-  add_group "Entities", "app/models/events"
-  add_group "Models", "app/models"
-  add_group "Controllers", "app/controllers"
-  add_group "Jobs", "app/jobs"
-  add_group "Helpers", "app/helpers"
-  add_filter "spec"
-  add_filter "config"
-  add_filter "app/admin"
-end
-
+SimpleCov.start
 require File.expand_path("../../config/environment", __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -23,6 +12,7 @@ require "rspec/rails"
 require "factory_bot_rails"
 require "webmock/rspec"
 require "shoulda/matchers"
+require "view_component/test_helpers"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |file| require file }
 
@@ -39,7 +29,7 @@ RSpec.configure do |config|
   config.include Shoulda::Matchers::ActiveRecord, type: :form
   config.include ViewComponent::TestHelpers, type: :component
   config.include FactoryBot::Syntax::Methods
-  config.include Helpers::FlipperToggler
+
 
   config.before do
     ActionMailer::Base.deliveries.clear
